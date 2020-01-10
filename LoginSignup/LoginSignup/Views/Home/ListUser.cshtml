@@ -1,0 +1,46 @@
+﻿@model IEnumerable<LoginSignup.Models.User>
+
+@{
+    ViewBag.Title = "ListUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListUser</h2>
+
+<h2>Welcome</h2> 
+
+@{
+    var message = " ";
+  HttpCookie cookie = Request.Cookies["UserInfo"];
+  if(cookie != null){
+      message = cookie["NickName"];
+ }  
+}
+
+<h2>@message</h2>
+
+<h1>User's Registerd </h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NickName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+    </tr>
+}
+
+</table>

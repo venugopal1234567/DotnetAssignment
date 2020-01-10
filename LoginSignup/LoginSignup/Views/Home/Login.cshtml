@@ -1,0 +1,31 @@
+﻿@model LoginSignup.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Login</h1>
+
+@using (Html.BeginForm("Login", "Home"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.username)
+        @Html.TextBoxFor(m => m.username, new { @class = "form-control"})
+        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.password)
+        @Html.PasswordFor( m => m.password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Login" class="btn btn-default" />
+        </div>
+    </div>
+
+}
